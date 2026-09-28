@@ -7,7 +7,6 @@ import Button from "@/Components/LandingComponents/atoms/Button/Button";
 import SignupPrompt from "@/Components/LandingComponents/molecules/LoginContent/SignupPrompt/SignupPrompt";
 import {ERRORS} from "@/Validations/errors";
 import {useSubmit} from "@/x-api-hooks/useSubmit";
-import {persistFromResponse} from "@/auth/session";
 import {colors} from "@/styles/colors";
 
 type LoginType = {
@@ -21,10 +20,7 @@ const LoginForm = () => {
     const {submit, loading} = useSubmit<LoginType>("/auth/login", setError);
 
     const onSubmit = (data: LoginType) =>
-        submit(data, async (res) => {
-            await persistFromResponse(res.data);
-            router.replace("/dashboard");
-        });
+        submit(data, () => router.replace("/dashboard"));
 
     return (
         <View style={styles.form}>

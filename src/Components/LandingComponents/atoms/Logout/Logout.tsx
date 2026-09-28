@@ -3,7 +3,7 @@ import {Pressable, StyleSheet, Text} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
 import {router} from "expo-router";
 import {POST} from "@/x-api/api";
-import {clearTokens} from "@/auth/session";
+import {clearSession} from "@/auth/session";
 import {colors} from "@/styles/colors";
 import LogoutConfirmDialog from "@/Components/LandingComponents/atoms/Logout/LogoutConfirmDialog/LogoutConfirmDialog";
 
@@ -17,9 +17,9 @@ const Logout = () => {
         try {
             await POST("/auth/logout");
         } catch {
-            // ignore — მაინც ვასუფთავებთ ლოკალურ token-ებს
+            // ignore — მაინც ვასუფთავებთ ლოკალურ სესიას
         }
-        await clearTokens();
+        await clearSession();
         setLoading(false);
         setOpen(false);
         router.replace("/login");

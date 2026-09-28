@@ -9,7 +9,7 @@ const KentseroLogo = () => {
                 style={styles.logo}
                 resizeMode="contain"
             />
-            <Text style={styles.title}>KENTSERO</Text>
+            <Text style={styles.title}>ROOTY</Text>
         </View>
     );
 };

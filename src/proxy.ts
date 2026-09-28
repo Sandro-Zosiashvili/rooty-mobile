@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {useRouter, useSegments} from "expo-router";
-import {getAccessToken, getRefreshToken, isTokenExpired, refreshSession} from "@/auth/session";
+import {hasSession} from "@/auth/session";
 
 /**
  * ვების src/proxy.ts იყო Next.js middleware — ის request-ს ჭრიდა და cookie-ებით
@@ -26,26 +26,13 @@ export function useProxy() {
         (async () => {
             // მიმდინარე top-level route ((auth) group-ს გამოვტოვებთ)
             const current = segments.filter((s) => !s.startsWith("(")).at(0) ?? "";
-
-            const isProtected = PROTECTED_ROUTES.includes(current);
-            const isAuthPage = AUTH_ROUTES.includes(current);
-
-            let access = await getAccessToken();
-            const refresh = await getRefreshToken();
-
-            // access ვადაგასულია, refresh კი არსებობს → ვცდით განახლებას (proxy-ის refresh ბლოკი)
-            if (isTokenExpired(access) && refresh) {
-                const ok = await refreshSession();
-                if (ok) access = await getAccessToken();
-            }
-
-            const authed = !isTokenExpired(access) || Boolean(refresh);
+            const authed = await hasSession();
 
             if (cancelled) return;
 
-            if (isProtected && !authed) {
+            if (PROTECTED_ROUTES.includes(current) && !authed) {
                 router.replace("/login");
-            } else if (isAuthPage && authed) {
+            } else if (AUTH_ROUTES.includes(current) && authed) {
                 router.replace("/dashboard");
             }
 

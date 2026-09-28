@@ -9,7 +9,6 @@ import Input from "@/Components/LandingComponents/atoms/Input/Input";
 import Button from "@/Components/LandingComponents/atoms/Button/Button";
 import {useSubmit} from "@/x-api-hooks/useSubmit";
 import {flowStorage} from "@/Storage/flowStorage";
-import {persistFromResponse} from "@/auth/session";
 import {colors} from "@/styles/colors";
 
 type UsernameType = {
@@ -32,9 +31,8 @@ const ChooseUsername = () => {
             router.replace("/login");
             return;
         }
-        submit({...data, token}, async (res) => {
+        submit({...data, token}, () => {
             flowStorage.removeItem("googleToken");
-            await persistFromResponse(res.data);
             router.replace("/dashboard");
         });
     };
