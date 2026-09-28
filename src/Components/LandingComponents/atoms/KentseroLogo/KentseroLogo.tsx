@@ -1,5 +1,6 @@
 import {Image, StyleSheet, Text, View} from "react-native";
 import {colors} from "@/styles/colors";
+import {fonts} from "@/fonts/fonts";
 
 const KentseroLogo = () => {
     return (
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     title: {
         color: colors.secondary500,
         fontSize: 20,
-        fontWeight: "400",
+        fontFamily: fonts.mina(400),
         lineHeight: 24,
         letterSpacing: 1.6,
         alignSelf: "flex-end",

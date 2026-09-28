@@ -1,6 +1,7 @@
 import {SafeAreaView, StyleSheet, Text, View} from "react-native";
 import Logout from "@/Components/LandingComponents/atoms/Logout/Logout";
 import {colors} from "@/styles/colors";
+import {fonts} from "@/fonts/fonts";
 
 // სატესტო თეთრი dashboard — login/logout ნაკადის შესამოწმებლად.
 export default function Dashboard() {
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     title: {
         color: colors.secondary500,
         fontSize: 24,
-        fontWeight: "600",
+        fontFamily: fonts.futura(),
     },
     footer: {
         padding: 16,

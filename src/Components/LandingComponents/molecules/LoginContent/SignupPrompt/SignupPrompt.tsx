@@ -1,6 +1,7 @@
 import {StyleSheet, Text, View, ViewStyle} from "react-native";
 import {router} from "expo-router";
 import {colors} from "@/styles/colors";
+import {fonts} from "@/fonts/fonts";
 
 type Props = {
     style?: ViewStyle | ViewStyle[];
@@ -28,13 +29,13 @@ const styles = StyleSheet.create({
     registerQuestion: {
         color: colors.primary800,
         fontSize: 14,
-        fontWeight: "500",
+        fontFamily: fonts.mersad(500),
         lineHeight: 24,
     },
     register: {
         color: colors.secondary500,
         fontSize: 14,
-        fontWeight: "700",
+        fontFamily: fonts.mersad(700),
         lineHeight: 24,
     },
 });

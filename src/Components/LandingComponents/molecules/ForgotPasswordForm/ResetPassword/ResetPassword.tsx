@@ -11,6 +11,7 @@ import {POST} from "@/x-api/api";
 import SuccessModal from "@/Components/LandingComponents/molecules/ForgotPasswordForm/SuccessModal/SuccessModal";
 import {flowStorage} from "@/Storage/flowStorage";
 import {colors} from "@/styles/colors";
+import {fonts} from "@/fonts/fonts";
 
 type ResetFormType = {
     newPassword: string;
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
     title: {
         color: colors.secondary500,
         fontSize: 24,
-        fontWeight: "500",
+        fontFamily: fonts.futura(),
         lineHeight: 32,
         textAlign: "center",
         marginTop: 24,
@@ -164,7 +165,7 @@ const styles = StyleSheet.create({
     label: {
         color: colors.primary800,
         fontSize: 14,
-        fontWeight: "600",
+        fontFamily: fonts.mersad(600),
         lineHeight: 24,
     },
     button: {

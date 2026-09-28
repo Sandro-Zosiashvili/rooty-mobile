@@ -10,6 +10,7 @@ import Button from "@/Components/LandingComponents/atoms/Button/Button";
 import {useSubmit} from "@/x-api-hooks/useSubmit";
 import {flowStorage} from "@/Storage/flowStorage";
 import {colors} from "@/styles/colors";
+import {fonts} from "@/fonts/fonts";
 
 type UsernameType = {
     username: string;
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     title: {
         color: colors.secondary500,
         fontSize: 24,
-        fontWeight: "500",
+        fontFamily: fonts.futura(),
         lineHeight: 32,
         textAlign: "center",
         marginTop: 24,

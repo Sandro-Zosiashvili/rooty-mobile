@@ -12,6 +12,7 @@ import {useSubmit} from "@/x-api-hooks/useSubmit";
 import {useGeoInput} from "@/Translator/useGeoInput";
 import {flowStorage} from "@/Storage/flowStorage";
 import {colors} from "@/styles/colors";
+import {fonts} from "@/fonts/fonts";
 
 const RegisterContent = () => {
     const [remember, setRemember] = useState(false);
@@ -202,7 +203,7 @@ const styles = StyleSheet.create({
     label: {
         color: colors.primary800,
         fontSize: 14,
-        fontWeight: "600",
+        fontFamily: fonts.mersad(600),
         lineHeight: 24,
     },
     button: {

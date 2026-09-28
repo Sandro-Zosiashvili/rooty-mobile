@@ -8,6 +8,7 @@ import SignupPrompt from "@/Components/LandingComponents/molecules/LoginContent/
 import {ERRORS} from "@/Validations/errors";
 import {useSubmit} from "@/x-api-hooks/useSubmit";
 import {colors} from "@/styles/colors";
+import {fonts} from "@/fonts/fonts";
 
 type LoginType = {
     identifier: string;
@@ -118,14 +119,14 @@ const styles = StyleSheet.create({
     label: {
         color: colors.primary800,
         fontSize: 14,
-        fontWeight: "600",
+        fontFamily: fonts.mersad(600),
         lineHeight: 24,
     },
     forgotPassword: {
         color: colors.secondary400,
         textAlign: "right",
         fontSize: 14,
-        fontWeight: "700",
+        fontFamily: fonts.mersad(700),
         lineHeight: 24,
     },
     button: {

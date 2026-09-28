@@ -1,6 +1,7 @@
 import React from "react";
 import {ActivityIndicator, Pressable, StyleSheet, Text, TextStyle, ViewStyle} from "react-native";
 import {colors} from "@/styles/colors";
+import {fonts} from "@/fonts/fonts";
 
 type Props = {
     variant: "primary" | "secondary" | "tertiary";
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     text: {
         textAlign: "center",
         fontSize: 14,
-        fontWeight: "600",
+        fontFamily: fonts.mersad(600),
         lineHeight: 24,
     },
     textPrimary: {

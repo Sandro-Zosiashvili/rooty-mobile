@@ -3,6 +3,7 @@ import {Animated, Image, Modal, Pressable, StyleSheet, Text, View, ViewStyle} fr
 import Button from "@/Components/LandingComponents/atoms/Button/Button";
 import DescriptionTexts from "@/Components/LandingComponents/atoms/DescriptionTexts/DescriptionTexts";
 import {colors} from "@/styles/colors";
+import {fonts} from "@/fonts/fonts";
 
 type Props = {
     isOpen: boolean;
@@ -97,9 +98,9 @@ const styles = StyleSheet.create({
     },
     title: {
         color: colors.secondary500,
-        fontSize: 20,
-        fontWeight: "600",
-        lineHeight: 28,
+        fontSize: 24,
+        fontFamily: fonts.futura(),
+        lineHeight: 32,
         textAlign: "center",
         marginTop: 16,
     },

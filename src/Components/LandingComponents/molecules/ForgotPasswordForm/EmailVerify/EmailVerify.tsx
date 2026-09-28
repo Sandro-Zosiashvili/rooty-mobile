@@ -11,6 +11,7 @@ import {toast} from "@/Components/LandingComponents/atoms/ToastProvider/register
 import SuccessModal from "@/Components/LandingComponents/molecules/ForgotPasswordForm/SuccessModal/SuccessModal";
 import {flowStorage} from "@/Storage/flowStorage";
 import {colors} from "@/styles/colors";
+import {fonts} from "@/fonts/fonts";
 
 const EmailVerify = () => {
     const [code, setCode] = useState("");
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
     title: {
         color: colors.secondary500,
         fontSize: 24,
-        fontWeight: "500",
+        fontFamily: fonts.futura(),
         lineHeight: 32,
         textAlign: "center",
         marginTop: 24,
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
     codeRefresh: {
         color: colors.secondary400,
         fontSize: 14,
-        fontWeight: "600",
+        fontFamily: fonts.mersad(700),
         lineHeight: 24,
         textAlign: "center",
     },

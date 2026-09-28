@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {Animated, Pressable, StyleSheet, Text} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
 import {colors} from "@/styles/colors";
+import {fonts} from "@/fonts/fonts";
 
 type ToastType = "success" | "error";
 
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
         flex: 1,
         color: colors.secondary400,
         fontSize: 14,
-        fontWeight: "500",
+        fontFamily: fonts.futura(),
         lineHeight: 20,
     },
     success: {

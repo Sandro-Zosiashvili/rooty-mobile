@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import {Ionicons} from "@expo/vector-icons";
 import {colors} from "@/styles/colors";
+import {fonts} from "@/fonts/fonts";
 
 type Props = Omit<TextInputProps, "style"> & {
     type?: "text" | "password" | "email";
@@ -141,6 +142,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         width: "100%",
         color: colors.secondary500,
+        fontFamily: fonts.mersad(400),
         lineHeight: 24,
         borderRadius: 10,
         borderWidth: 1,
@@ -177,7 +179,7 @@ const styles = StyleSheet.create({
         color: colors.red500,
         fontSize: 12,
         lineHeight: 20,
-        fontWeight: "500",
+        fontFamily: fonts.mersad(500),
         flex: 1,
     },
     warningMessage: {
@@ -187,12 +189,14 @@ const styles = StyleSheet.create({
         color: colors.accent600,
         fontSize: 12,
         lineHeight: 20,
+        fontFamily: fonts.mersad(500),
         flex: 1,
     },
     label: {
         color: colors.secondary500,
         fontSize: 12,
         lineHeight: 24,
+        fontFamily: fonts.mersad(400),
         marginBottom: 4,
     },
     eyeButton: {
@@ -209,6 +213,7 @@ const styles = StyleSheet.create({
         bottom: 12,
         fontSize: 14,
         color: colors.primary800,
+        fontFamily: fonts.firago(400),
         lineHeight: 24,
     },
 });

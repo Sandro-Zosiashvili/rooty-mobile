@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from "react-native";
 import KentseroLogo from "@/Components/LandingComponents/atoms/KentseroLogo/KentseroLogo";
 import GoogleRegistration from "@/Components/LandingComponents/atoms/GoogleRegistration/GoogleRegistration";
 import {colors} from "@/styles/colors";
+import {fonts} from "@/fonts/fonts";
 
 const LoginHeader = () => {
     return (
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
         color: "#949494",
         textAlign: "center",
         fontSize: 14,
-        fontWeight: "500",
+        fontFamily: fonts.mersad(500),
         lineHeight: 24,
     },
 });

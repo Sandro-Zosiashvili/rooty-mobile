@@ -9,6 +9,7 @@ import {
     ViewStyle,
 } from "react-native";
 import {Ionicons} from "@expo/vector-icons";
+import {fonts} from "@/fonts/fonts";
 
 type Props = {
     length?: number;
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
         color: "#171717",
         fontSize: 30,
-        fontWeight: "500",
+        fontFamily: fonts.firago(500),
     },
     filled: {
         borderColor: "#49b83f",
@@ -138,7 +139,7 @@ const styles = StyleSheet.create({
     errorText: {
         color: "#ED5656",
         fontSize: 14,
-        fontWeight: "600",
+        fontFamily: fonts.mersad(600),
         lineHeight: 24,
     },
 });

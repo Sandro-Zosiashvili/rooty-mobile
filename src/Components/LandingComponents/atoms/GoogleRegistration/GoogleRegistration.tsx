@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {Image, Pressable, StyleSheet, Text, View} from "react-native";
 import {colors} from "@/styles/colors";
+import {fonts} from "@/fonts/fonts";
 import {toast} from "@/Components/LandingComponents/atoms/ToastProvider/registerToast";
 
 /**
@@ -63,11 +64,11 @@ const styles = StyleSheet.create({
     googleTitle: {
         color: colors.secondary500,
         fontSize: 14,
-        fontWeight: "600",
+        fontFamily: fonts.mersad(600),
         lineHeight: 24,
     },
     google: {
-        fontWeight: "600",
+        fontFamily: fonts.inter(600),
     },
 });
 

@@ -5,6 +5,7 @@ import {router} from "expo-router";
 import {POST} from "@/x-api/api";
 import {clearSession} from "@/auth/session";
 import {colors} from "@/styles/colors";
+import {fonts} from "@/fonts/fonts";
 import LogoutConfirmDialog from "@/Components/LandingComponents/atoms/Logout/LogoutConfirmDialog/LogoutConfirmDialog";
 
 const Logout = () => {
@@ -52,8 +53,8 @@ const styles = StyleSheet.create({
     },
     title: {
         color: colors.secondary500,
-        fontSize: 14,
-        fontWeight: "600",
+        fontSize: 16,
+        fontFamily: fonts.futura(),
         lineHeight: 24,
     },
 });
