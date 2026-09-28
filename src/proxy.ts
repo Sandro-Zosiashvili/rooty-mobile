@@ -1,15 +1,12 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useRouter, useSegments} from "expo-router";
 import {hasSession} from "@/auth/session";
 
 /**
- * ვების src/proxy.ts იყო Next.js middleware — ის request-ს ჭრიდა და cookie-ებით
+ * ვების src/proxy.ts იყო Next.js middleware — request-ს ჭრიდა და cookie-ებით
  * წყვეტდა redirect-ს. მობაილს middleware არ აქვს, ამიტომ იგივე ლოგიკა route-guard
- * hook-ად გადმოვიდა: აქტიური route-ს ვადარებთ protected/auth სიებს და SecureStore-ის
- * token-ების მიხედვით ვახდენთ redirect-ს (expo-router-ით).
- *
- * ვების domain-ის ლოგიკა (kentsero.com ↔ my.kentsero.com) მობაილზე აღარ საჭიროა —
- * აპლიკაცია ერთი host-ია.
+ * hook-ად გადმოვიდა: აქტიურ route-ს ვადარებთ protected/auth სიებს და სესიის მიხედვით
+ * ვახდენთ redirect-ს (expo-router-ით).
  */
 
 const PROTECTED_ROUTES = ["dashboard", "onboarding"];
@@ -18,7 +15,6 @@ const AUTH_ROUTES = ["login", "register", "forgot-password"];
 export function useProxy() {
     const segments = useSegments();
     const router = useRouter();
-    const [checked, setChecked] = useState(false);
 
     useEffect(() => {
         let cancelled = false;
@@ -35,14 +31,10 @@ export function useProxy() {
             } else if (AUTH_ROUTES.includes(current) && authed) {
                 router.replace("/dashboard");
             }
-
-            setChecked(true);
         })();
 
         return () => {
             cancelled = true;
         };
     }, [segments, router]);
-
-    return {checked};
 }
