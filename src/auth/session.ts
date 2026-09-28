@@ -86,6 +86,24 @@ export async function persistFromResponse(data: unknown): Promise<void> {
 }
 
 /**
+ * ბექენდი token-ებს Set-Cookie header-ით აბრუნებს (access_token / refresh_token),
+ * body-ში კი მხოლოდ user-ია. ბრაუზერი ამ cookie-ებს უხილავად ინახავდა; RN-ს
+ * Set-Cookie header-ის წაკითხვა შეუძლია, ამიტომ აქ ვიღებთ token-ებს header-იდან
+ * და SecureStore-ში ვდებთ. JWT-ის მნიშვნელობა არ შეიცავს ; , ან space-ს.
+ */
+function matchCookie(text: string, name: string): string | null {
+    const m = text.match(new RegExp(`${name}=([^;,\\s]+)`));
+    return m ? m[1] : null;
+}
+
+export async function persistFromCookies(setCookie: string | string[]): Promise<void> {
+    const text = Array.isArray(setCookie) ? setCookie.join("; ") : setCookie;
+    const access = matchCookie(text, ACCESS_TOKEN);
+    const refresh = matchCookie(text, REFRESH_TOKEN);
+    if (access || refresh) await setTokens(access, refresh);
+}
+
+/**
  * proxy.ts-ის refresh ბლოკის ეკვივალენტი. ვებში refresh cookie-ს Next middleware
  * აგზავნიდა; მობაილში SecureStore-ის refresh token-ს ვგზავნით (header + body,
  * რომ ბექენდის ორივე მოლოდინი დაიფაროს) და ახალ token-ებს ვინახავთ.
@@ -103,6 +121,9 @@ export async function refreshSession(): Promise<boolean> {
             body: JSON.stringify({refresh_token: refresh}),
         });
         if (!res.ok) return false;
+        // refresh ახალ access token-ს Set-Cookie-ში აბრუნებს, body-ში მხოლოდ {message}
+        const setCookie = res.headers.get("set-cookie");
+        if (setCookie) await persistFromCookies(setCookie);
         const data = await res.json().catch(() => null);
         await persistFromResponse(data);
         return true;

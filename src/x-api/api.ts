@@ -1,7 +1,7 @@
 import axios from "axios";
 import type {AxiosError} from "axios";
 import {ERRORS} from "@/Validations/errors";
-import {getAccessToken} from "@/auth/session";
+import {getAccessToken, persistFromCookies} from "@/auth/session";
 
 const client = axios.create({
     baseURL: process.env.EXPO_PUBLIC_BACKEND_URL,
@@ -16,6 +16,15 @@ client.interceptors.request.use(async (config) => {
         config.headers.set?.("Authorization", `Bearer ${token}`);
     }
     return config;
+});
+
+// ბექენდი token-ებს Set-Cookie-ში აბრუნებს. ბრაუზერი მათ თავად ინახავდა;
+// RN-ში ამ interceptor-ს ვთამაშობთ "cookie jar"-ის როლს — Set-Cookie-დან
+// access/refresh token-ს ვიღებთ და SecureStore-ში ვდებთ.
+client.interceptors.response.use(async (response) => {
+    const setCookie = response.headers?.["set-cookie"];
+    if (setCookie) await persistFromCookies(setCookie);
+    return response;
 });
 
 export type ApiResult<T> =
