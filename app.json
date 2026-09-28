@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "Rooty",
+    "slug": "rooty-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "rooty",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "static"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
